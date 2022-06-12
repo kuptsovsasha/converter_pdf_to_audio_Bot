@@ -41,7 +41,7 @@ def main_function(message):
 
 
 @bot.message_handler(func=lambda message: message.document,
-                     content_types=['document',])
+                     content_types=['document', ])
 def manage_files(message):
     raw = message.document.file_id
     path = f"pdf_files/{raw}.pdf"
@@ -54,8 +54,6 @@ def manage_files(message):
     if convert:
         doc = open(f'converted_audio_files/{raw}.mp3', 'rb')
         bot.send_document(message.chat.id, doc)
-
-
 
 
 bot.polling(none_stop=True)
